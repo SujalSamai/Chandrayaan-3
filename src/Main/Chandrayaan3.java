@@ -53,6 +53,14 @@ public class Chandrayaan3 {
         }
     }
 
+    public void turnUp() {
+        direction="U";
+    }
+
+    public void turnDown() {
+        direction="D";
+    }
+
     public void executeCommands(String[] commands) {
         for (String cmd : commands) {
             switch (cmd) {
