@@ -13,6 +13,24 @@ public class Chandrayaan3 {
         direction = initialDirection;
     }
 
+    public void executeCommands(String[] commands) {
+        for (String cmd : commands) {
+            switch (cmd) {
+                case "f" -> moveForward();
+                case "b" -> moveBackward();
+                case "l" -> turnLeft();
+                case "r" -> turnRight();
+                case "u" -> turnUp();
+                case "d" -> turnDown();
+            }
+        }
+    }
+
+    public void printFinalState() {
+        System.out.println("Final Position: (" + x + ", " + y + ", " + z + ")");
+        System.out.println("Final Direction: " + direction);
+    }
+
 
     public static void main(String[] args) {
         int initialX = 0, initialY = 0, initialZ = 0;
