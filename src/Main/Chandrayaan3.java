@@ -91,11 +91,32 @@ public class Chandrayaan3 {
 
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int initialX = 0, initialY = 0, initialZ = 0;
+        System.out.println("Enter initial coordinates of the spacecraft: ");
+        System.out.print("x: ");
+        initialX = sc.nextInt();
+        System.out.print("y: ");
+        initialY = sc.nextInt();
+        System.out.print("z: ");
+        initialZ = sc.nextInt();
+        System.out.println();
+
         String initialDirection = "N";
+        System.out.print("Enter initial direction of the SpaceCraft: ");
+        initialDirection = sc.next();
+        System.out.println();
 
-        String[] commands = {"f","r","u","d","l"};
+        int n=0;
+        System.out.print("How many commands you want to enter? ");
+        n = sc.nextInt();
+        String[] commands = new String[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Command "+ (i+1) + ": ");
+            commands[i] = sc.next();
+        }
 
+        System.out.println();
         Chandrayaan3 chandrayaan = new Chandrayaan3(initialX, initialY, initialZ, initialDirection);
         chandrayaan.executeCommands(commands, initialDirection);
         chandrayaan.printFinalState();
