@@ -35,7 +35,8 @@ public class Chandrayaan3 {
         }
     }
 
-    public void turnLeft() {
+    public void turnLeft(String prev) {
+        prev = direction;
         switch (direction) {
             case "N", "U" -> direction = "W";
             case "S", "D" -> direction = "E";
@@ -44,7 +45,8 @@ public class Chandrayaan3 {
         }
     }
 
-    public void turnRight() {
+    public void turnRight(String prev) {
+        prev= direction;
         switch (direction) {
             case "N", "U" -> direction = "E";
             case "S", "D" -> direction = "W";
@@ -53,23 +55,31 @@ public class Chandrayaan3 {
         }
     }
 
-    public void turnUp() {
-        direction="U";
+    public void turnUp(String prev) {
+        if (direction.equals("D")){
+            direction=prev;
+        }else{
+            direction="U";
+        }
     }
 
-    public void turnDown() {
-        direction="D";
+    public void turnDown(String prev) {
+        if (direction.equals("U")){
+            direction=prev;
+        }else{
+            direction="D";
+        }
     }
 
-    public void executeCommands(String[] commands) {
+    public void executeCommands(String[] commands, String prev) {
         for (String cmd : commands) {
             switch (cmd) {
                 case "f" -> moveForward();
                 case "b" -> moveBackward();
-                case "l" -> turnLeft();
-                case "r" -> turnRight();
-                case "u" -> turnUp();
-                case "d" -> turnDown();
+                case "l" -> turnLeft(prev);
+                case "r" -> turnRight(prev);
+                case "u" -> turnUp(prev);
+                case "d" -> turnDown(prev);
             }
         }
     }
@@ -84,10 +94,10 @@ public class Chandrayaan3 {
         int initialX = 0, initialY = 0, initialZ = 0;
         String initialDirection = "N";
 
-        String[] commands = {"f","r","u","b","l"};
+        String[] commands = {"f","r","u","d","l"};
 
         Chandrayaan3 chandrayaan = new Chandrayaan3(initialX, initialY, initialZ, initialDirection);
-        chandrayaan.executeCommands(commands);
+        chandrayaan.executeCommands(commands, initialDirection);
         chandrayaan.printFinalState();
     }
 }
