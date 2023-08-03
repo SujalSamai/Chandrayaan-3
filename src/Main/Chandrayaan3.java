@@ -44,6 +44,15 @@ public class Chandrayaan3 {
         }
     }
 
+    public void turnRight() {
+        switch (direction) {
+            case "N", "U" -> direction = "E";
+            case "S", "D" -> direction = "W";
+            case "E" -> direction = "S";
+            case "W" -> direction = "N";
+        }
+    }
+
     public void executeCommands(String[] commands) {
         for (String cmd : commands) {
             switch (cmd) {
