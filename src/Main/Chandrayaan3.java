@@ -13,6 +13,17 @@ public class Chandrayaan3 {
         direction = initialDirection;
     }
 
+    public void moveForward() {
+        switch (direction) {
+            case "N" -> y++;
+            case "S" -> y--;
+            case "E" -> x++;
+            case "W" -> x--;
+            case "U" -> z++;
+            case "D" -> z--;
+        }
+    }
+
     public void executeCommands(String[] commands) {
         for (String cmd : commands) {
             switch (cmd) {
